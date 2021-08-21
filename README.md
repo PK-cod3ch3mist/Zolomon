@@ -38,7 +38,7 @@ int main() {
     });
     Test1.run_collection("-d -p");
     Test2.run_collection("-nd -np");
-	return 0;
+    return 0;
 }
 ```
 `zoln::TestCase` is the basic block of the library which has the parameters: `name`, `expression`, and `show`/`hide` respectively. The `name` is the name of the test case, `expression` is what you want to check and `show` is a boolean which is true if you want to show and false if you want to hide the result of that test.
@@ -46,4 +46,5 @@ int main() {
 **Note that hidden test cases are also run, just not shown.**
 
 Compiling the above code and running the executable would give the following output.
-![Simple Eg Output]()
+
+![Simple Eg Output](https://github.com/PK-cod3ch3mist/Zolomon/blob/main/simple.png)
