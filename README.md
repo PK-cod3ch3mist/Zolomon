@@ -6,7 +6,7 @@ Another single header testing library for C++.
 - [About](#about)
 - How to Use
     - [Installation](#installation-and-set-up)
-    - [Quick Start](#a-few-simple-examples)
+    - [Quick Start](#a-simple-example)
 - License
 - Contributors
 
@@ -19,7 +19,7 @@ The name is inspired from the DC character Zoom, who creates tragic situations f
 ### Installation and Set Up
 Simply download the [header file](https://raw.githubusercontent.com/PK-cod3ch3mist/Zolomon/main/zolomon.hpp?token=ANHLDA6AV5SHVJRQVTHP4NTBFIGVY) and place it along with your project, and use as you would use any other C++ library. Use the namespace zoln when declaring test cases.
 
-### A Few Simple Examples
+### A Simple Example
 Below is a simple file that demonstrates the use of Zolomon library.
 ```c++
 #include <iostream>
