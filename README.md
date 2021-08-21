@@ -7,7 +7,6 @@ Another single header testing library for C++.
 - How to Use
     - [Installation](#installation-and-set-up)
     - [Quick Start](#a-few-simple-examples)
-    - [Docs](#documentation)
 - License
 - Contributors
 
@@ -55,6 +54,3 @@ Tests - Sample Test 2
 [+] : Test Case 2. 
 1 passed out of 2 tests.
 ```
-
-### Documentation
-Documentation is available in .pdf and .md format. Click on the links below to view or download it.
