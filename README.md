@@ -41,7 +41,7 @@ int main() {
 }
 ```
 Compiling the above code and running the executable would give the following output.
-```shell
+```
 Tests - Sample Test 1
 [+] : Test Case 1. 
 [-] : Test Case 2. In location testzolomon.cpp : line 9. 
