@@ -1,3 +1,5 @@
+// The simple example to demonstrate the use of Zolomon header file
+
 #include <iostream>
 #include <vector>
 #include "zolomon.hpp"
