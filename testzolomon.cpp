@@ -9,8 +9,10 @@ int main() {
 	    zoln::TestCase("Test Case 2", v[2] == 1, true)
 	});
 	zoln::TestCollection Test2("Sample Test 2", {
-	    zoln::TestCase("Test Case 1", v[0] + v[1] == 2, false),
+	    zoln::TestCase("Test Case 1", v[0] + v[1] == 2, true),
 	    zoln::TestCase("Test Case 2", v[0] + v[1] == 3, true)
 	});
+	Test1.run_collection("-d -p");
+	Test2.run_collection("-nd -np");
 	return 0;
 }
