@@ -21,7 +21,7 @@ The name is inspired from the DC character Zoom, who creates tragic situations f
 Simply download the [header file](https://raw.githubusercontent.com/PK-cod3ch3mist/Zolomon/main/zolomon.hpp?token=ANHLDA6AV5SHVJRQVTHP4NTBFIGVY) and place it along with your project, and use as you would use any other C++ library. Use the namespace zoln when declaring test cases.
 
 ### A Few Simple Examples
-Below is a simple file that demonstrates the use of Zolomon library
+Below is a simple file that demonstrates the use of Zolomon library.
 ```c++
 #include <iostream>
 #include <vector>
@@ -40,6 +40,10 @@ int main() {
 	return 0;
 }
 ```
+`zoln::TestCase` is the basic block of the library which has the parameters: `name`, `expression`, and `show`/`hide` respectively. The `name` is the name of the test case, `expression` is what you want to check and `show` is a boolean which is true if you want to show and false if you want to hide the result of that test.
+
+**Note that hidden test cases are also run, just not shown.**
+
 Compiling the above code and running the executable would give the following output.
 ```
 Tests - Sample Test 1
@@ -53,4 +57,4 @@ Tests - Sample Test 2
 ```
 
 ### Documentation
-Documentation is available in .pdf and .md format. Click on the links to view it.
+Documentation is available in .pdf and .md format. Click on the links below to view or download it.
