@@ -19,35 +19,34 @@
 #include <string>
 #include <stdexcept>
 #include <exception>
-#include <list>
+#include <vector>
 #include <algorithm>
+
+#define STRINGIZING(X) #X
+#define STR(X) STRINGIZING(X)
+#define FILE_LINE __FILE__ " : line " STR(__LINE__)
 
 namespace zoln {
 
-    template <typename T>
     class TestResult {
         bool passed;
-        std::string file;
-        std::string line;
+        std::string loc;
 
     public:
         TestResult() {
             passed = true;
-            file = __FILE__;
-            line = __LINE__;
         }
 
-        void set_result(T expression, T expected_val) {
-            if (expression != expected_val)
-                passed = false;
+        void set_result(bool expression, std::string location) {
+            passed = expression;
+            loc = location;
         }
 
-        bool test_pass() return passed;
+        bool test_pass() const { return passed; }
 
         friend std::ostream& operator <<(std::ostream& out, const TestResult& result);
     };
 
-    template <typename X>
     class TestCase {
         bool hide;
         TestResult result;
@@ -58,59 +57,62 @@ namespace zoln {
             name = "noname";
         }
 
-        TestCase(std::string name, X expression, X expected_val, bool show_test) {
+        TestCase(std::string name, bool expression, bool show_test, std::string location) {
             hide = !show_test;
-            this.name = name;
-            result.set_result(expression, expected_val);
+            this -> name = name;
+            result.set_result(expression, location);
         }
 
-        bool test_pass() return result.test_pass();
+        bool test_pass() const { return result.test_pass(); }
 
-        friend std::ostream& operator <<(std::ostream& out, const TestCase& case);
+        friend std::ostream& operator <<(std::ostream& out, const TestCase& test_case);
     };
 
+#define TestCase(name, expr, show) TestCase(name, expr, show, FILE_LINE)
+
     std::ostream& operator <<(std::ostream& out, const TestResult& result) {
-        if (result.passed) out << "[+] : ";
-        else {
-            out << "[-] : In file " << result.file << " and line " << result.line << std::endl;
+        if (!result.passed) {
+            out << "In location " << result.loc << ". ";
         }
 
         return out;
     }
 
-    std::ostream& operator <<(std::ostream& out, const TestCase& case) {
-        if (!hide) {
-            out << case.result;
-            out << "Test - " << case.name << std::endl;
-        } else {
-            out << "";
+    std::ostream& operator <<(std::ostream& out, const TestCase& test_case) {
+        if (!test_case.hide) {
+            if (test_case.test_pass()) out << "[+] : ";
+            else out << "[-] : ";
+            out << test_case.name << ". ";
+            out << test_case.result << std::endl;
         }
-
         return out;
     }
 
     class TestCollection {
-        std::string name;
-        std::list<TestCase> cases;
-        unsigned long num_passed;
+        std::string _name;
+        std::vector<TestCase> _test_cases;
+        unsigned long _num_passed;
     public:
-        explicit TestCollection(std::string nm, std::initializer_list<TestCase> cases) {
-            this.name = nm;
-            for (size_t i = 0; i < cases.size(); i++) {
-                this.cases.push_back(cases[i]);
+        explicit TestCollection(std::string name, std::initializer_list<TestCase> tests) {
+            _name = name;
+            for (auto it = tests.begin(); it != tests.end(); it++) {
+                _test_cases.push_back(*it);
             }
-            num_passed = 0;
+            _num_passed = 0;
 
             // if a test case is not hidden, show its results
-            cout << "Tests - " << this.name << std::endl;
-            for (size_t i = 0; i < this.cases.size(); i++) {
-                if (this.cases[i].test_pass()) {
-                    num_passed++;
+            std::cout << "Tests - " << _name << std::endl;
+            for (size_t i = 0; i < _test_cases.size(); i++) {
+                if (_test_cases[i].test_pass()) {
+                    _num_passed++;
                 }
-                cout << this.cases[i];
+                std::cout << _test_cases[i];
             }
 
-            cout << num_passed << " passed out of " << this.cases.size() << " tests." << std::endl;
+            if (_num_passed == _test_cases.size())
+                std::cout << "All tests passed.\n" << std::endl;
+            else
+                std::cout << _num_passed << " passed out of " << _test_cases.size() << " tests.\n" << std::endl;
         }
     };
 }

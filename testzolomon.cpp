@@ -1,10 +1,16 @@
 #include <iostream>
 #include <vector>
-#include <vector>
+#include "zolomon.hpp"
 
 int main() {
-	std::vector<int> v;
-	v.push_back(1);
-	std::cout << v[0] << std::endl;
+	std::vector<int> v = {1, 2, 0, 3, 0, 1, 4, 2, 1};
+	zoln::TestCollection Test1("Sample Test 1" , {
+	    zoln::TestCase("Test Case 1", v[0] == 1, true),
+	    zoln::TestCase("Test Case 2", v[2] == 1, true)
+	});
+	zoln::TestCollection Test2("Sample Test 2", {
+	    zoln::TestCase("Test Case 1", v[0] + v[1] == 2, false),
+	    zoln::TestCase("Test Case 2", v[0] + v[1] == 3, true)
+	});
 	return 0;
 }
