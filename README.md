@@ -48,3 +48,9 @@ int main() {
 Compiling the above code and running the executable would give the following output.
 
 ![Simple Eg Output](https://github.com/PK-cod3ch3mist/Zolomon/blob/main/simple.png)
+
+The strings passed while running are:
+- \-d : show run time of test cases
+- \-p : show passed test cases
+- \-nd : do not show run time of test cases
+- \-np : do not show passed test cases
