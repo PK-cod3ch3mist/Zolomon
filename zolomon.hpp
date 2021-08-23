@@ -30,6 +30,8 @@
 #define FILE_LINE __FILE__ " : line " STR(__LINE__)
 
 namespace zoln {
+    // The main namespace that has all the basic test functionalities
+    // The basic block is the TestCase class which HAS-A TestResult object
 
     namespace colours {
         const std::string BASE = "\033[0m";
