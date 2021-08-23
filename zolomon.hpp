@@ -105,7 +105,6 @@ namespace zoln {
         friend std::ostream& operator <<(std::ostream& out, const TestCase& test_case);
     };
 
-// to get line numbers in the source file later in execution
 #define TestCase(name, expr, show) TestCase(name, expr, show, FILE_LINE)
 
     std::ostream& operator <<(std::ostream& out, const TestResult& result) {
