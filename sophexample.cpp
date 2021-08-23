@@ -35,8 +35,8 @@ int main() {
     std::vector<int> nums2 = {0, 1, 2, 1, 2};
 
     zoln::TestCollection Test1("Sample Test", {
-        zoln::TestCase("Basic Test", prodVectorNoDivision(nums1) == std::vector<int>({12, 6, 6, 4, 12}), true),
-        zoln::TestCase("Handling Zeroes", prodVectorNoDivision(nums2) == std::vector<int>({4, 0, 0, 0, 0}), true)
+        zoln::TestCase("Basic Test", prodVectorNoDivision(nums1), std::vector<int>({12, 6, 6, 4, 12}), true),
+        zoln::TestCase("Handling Zeroes", prodVectorNoDivision(nums2), std::vector<int>({4, 0, 0, 0, 0}), true)
     });
 
     Test1.run_collection("-p -d");
