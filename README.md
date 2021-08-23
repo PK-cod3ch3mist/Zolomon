@@ -7,6 +7,7 @@ Another single header testing library for C++.
 - How to Use
     - [Installation](#installation-and-set-up)
     - [Quick Start](#a-simple-example)
+- [Contribute](#contribute)
 
 ## About
 Zolomon is  a single header testing library for C++, that reports file and line number in case of error, and can be used to create unit tests
@@ -104,3 +105,6 @@ This returns the following output.
 ![Sophisticated Example](https://github.com/PK-cod3ch3mist/Zolomon/blob/main/sophisticated.png)
 
 **Note that the order of the arguments when running a test collection does not matter.**
+
+## Contribute
+I you want to contribute, please create pull requests in the [expr_feature](https://github.com/PK-cod3ch3mist/Zolomon/tree/expr_feature) branch. Which is made for testing things that can break.
