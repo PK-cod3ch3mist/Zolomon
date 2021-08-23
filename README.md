@@ -62,7 +62,6 @@ The strings passed while running are:
 The following program, when given an array of integers, returns a new array such that each number at index i of the new array is the product of all the numbers in original array except the one at index i. Zolomon is used to test this program.
 
 **Note that in case of compound types the library does not show actual and expected variables.** This is being worked upon and will be available in the future.
-For now, try to not have unit tests for both compound and primitive types in the same file, things might break (*this is because the function for printing uses SFINAE techniques*).
 
 ```c++
 #include <iostream>
