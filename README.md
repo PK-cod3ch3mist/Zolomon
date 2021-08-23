@@ -1,5 +1,6 @@
 # Zolomon
 Another single header testing library for C++.
+*This is the experimental features branch of the library. I have not exhaustively tested these features, and they might break.*
 
 ## Contents
 
