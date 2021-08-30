@@ -36,8 +36,10 @@ namespace zoln {
 
     namespace colours {
         const std::string BASE = "\033[0m";
-        const std::string PASS = "\033[32m";
-        const std::string FAIL = "\033[31m";
+        const std::string PASSF = "\033[32m";
+        const std::string PASSB = "\033[42m\033[97m";
+        const std::string FAILF = "\033[31m";
+        const std::string FAILB = "\033[41m\033[97m";
         const std::string TLE = "\033[33m";
         const std::string EXEP = "\033[35m";
         const std::string LINF = "\033[90m";
@@ -124,10 +126,10 @@ namespace zoln {
     std::ostream& operator <<(std::ostream& out, const TestResult& result) {
         out << colours::LINF << result.loc << " -- " << colours::BASE;
         if (result.passed) {
-            out << "[" << colours::PASS << "PASSED" << colours::BASE << "] : ";
+            out << colours::PASSB << "PASSED" << colours::BASE << " ";
         }
         else {
-            out << "[" << colours::FAIL << "FAILED" << colours::BASE << "] : ";
+            out << colours::FAILB << "FAILED" << colours::BASE << " ";
         }
         return out;
     }
@@ -234,9 +236,9 @@ namespace zoln {
                 report_case(_test_cases[i]);
             }
             if (_num_passed == _test_cases.size())
-                std::cout << colours::PASS << "All Tests Passed\n" << colours::BASE << std::endl;
+                std::cout << colours::PASSF << "All Tests Passed\n" << colours::BASE << std::endl;
             else
-                std::cout << colours::FAIL << _num_passed << " Passed Out of " << _test_cases.size() << " Tests\n" << colours::BASE << std::endl;
+                std::cout << colours::FAILF << _num_passed << " Passed Out of " << _test_cases.size() << " Tests\n" << colours::BASE << std::endl;
         }
     };
 }
