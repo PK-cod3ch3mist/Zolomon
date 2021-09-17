@@ -45,7 +45,7 @@ int main() {
 
 Compiling the above code and running the executable would give the following output.
 
-![Simple Eg Output](https://github.com/PK-cod3ch3mist/Zolomon/blob/expr_feature/simple.png)
+![Simple Eg Output](https://raw.githubusercontent.com/PK-cod3ch3mist/Zolomon/main/simple.png)
 
 The strings passed while running are:
 - \-d : show run time of test cases
@@ -107,4 +107,4 @@ int main() {
 
 This returns the following output.
 
-![Sophisticated Example](https://github.com/PK-cod3ch3mist/Zolomon/blob/main/sophisticated.png)
+![Sophisticated Example](https://raw.githubusercontent.com/PK-cod3ch3mist/Zolomon/main/sophisticated.png)
