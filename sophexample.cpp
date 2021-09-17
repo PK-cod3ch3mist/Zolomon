@@ -8,7 +8,8 @@
 #include <vector>
 #include "zolomon.hpp"
 
-std::vector<int> prodVectorNoDivision(std::vector<int> &nums) {
+std::vector<int> prodVectorNoDivision(std::vector<int> &nums)
+{
     std::vector<long int> prefix(nums.size());
     std::vector<long int> suffix(nums.size());
     std::vector<int> result(nums.size());
@@ -30,7 +31,8 @@ std::vector<int> prodVectorNoDivision(std::vector<int> &nums) {
     return result;
 }
 
-int main() {
+int main()
+{
     std::vector<int> nums1 = {1, 2, 2, 3, 1};
     std::vector<int> nums2 = {0, 1, 2, 1, 2};
 
