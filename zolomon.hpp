@@ -30,11 +30,13 @@
 #define STR(X) STRINGIZING(X)
 #define FILE_LINE __FILE__ " : line " STR(__LINE__)
 
-namespace zoln {
+namespace zoln
+{
 // The main namespace that has all the basic test functionalities
 // The basic block is the TestCase class which HAS-A TestResult object
 
-namespace colours {
+namespace colours
+{
 const std::string BASE = "\033[0m";
 const std::string PASSF = "\033[32m";
 const std::string PASSB = "\033[42m\033[97m";
@@ -52,21 +54,25 @@ struct case_flags {
     int fail_notime : 1;
 };
 
-class TestResult {
+class TestResult
+{
     bool passed;
     std::string loc;
 
 public:
-    TestResult() {
+    TestResult()
+    {
         passed = true;
     }
 
-    void set_result(bool expression, std::string location) {
+    void set_result(bool expression, std::string location)
+    {
         passed = expression;
         loc = location;
     }
 
-    bool test_pass() const {
+    bool test_pass() const
+    {
         return passed;
     }
 
@@ -74,7 +80,8 @@ public:
 };
 
 template <typename T>
-class TestCase {
+class TestCase
+{
 
     bool hide;
     TestResult result;
@@ -87,12 +94,14 @@ class TestCase {
     template<typename Exp_r> friend class TestCollection;
 
 public:
-    TestCase() {
+    TestCase()
+    {
         hide = false;
         name = "noname";
     }
 
-    TestCase(std::string name, T acval, T exval, bool show_test, std::string location) {
+    TestCase(std::string name, T acval, T exval, bool show_test, std::string location)
+    {
         this -> hide = !show_test;
         this -> name = name;
         this -> acval = acval;
@@ -108,38 +117,42 @@ public:
         flag.fail_notime = 1;
     }
 
-    void set_flags(case_flags flg) {
+    void set_flags(case_flags flg)
+    {
         flag.show_pass = flag.show_pass | flg.show_pass;
         flag.show_time = flag.show_time | flg.show_time;
         flag.fail_notime = flag.fail_notime | flg.fail_notime;
     }
 
-    void unset_flags(case_flags flg) {
+    void unset_flags(case_flags flg)
+    {
         flag.show_time = flag.show_time & !flg.show_time;
         flag.show_pass = flag.show_pass & !flg.show_pass;
         flag.fail_notime = flag.fail_notime & !flg.fail_notime;
     }
 
-    bool test_pass() const {
+    bool test_pass() const
+    {
         return result.test_pass();
     }
 };
 
 #define TestCase(name, expr, eval, show) TestCase(name, expr, eval, show, FILE_LINE)
 
-std::ostream& operator <<(std::ostream& out, const TestResult& result) {
+std::ostream& operator <<(std::ostream& out, const TestResult& result)
+{
     out << colours::LINF << result.loc << " -- " << colours::BASE;
     if (result.passed) {
         out << colours::PASSB << "PASSED" << colours::BASE << " ";
-    }
-    else {
+    } else {
         out << colours::FAILB << "FAILED" << colours::BASE << " ";
     }
     return out;
 }
 
 template <typename Exp_r>
-class TestCollection {
+class TestCollection
+{
     std::string _name;
     std::vector<TestCase<Exp_r>> _test_cases;
     unsigned long _num_passed;
@@ -147,7 +160,8 @@ class TestCollection {
     template
     <typename T = Exp_r,
      typename std::enable_if<std::is_fundamental<T>::value, int>::type = 0>
-    void report_case(TestCase<Exp_r> test_case) {
+    void report_case(TestCase<Exp_r> test_case)
+    {
         if (test_case.test_pass() && !test_case.hide && test_case.flag.show_pass) {
             std::cout << test_case.result;
             std::cout << test_case.name << ". ";
@@ -157,8 +171,7 @@ class TestCollection {
                 std::cout << "Time taken = " << test_case.dur.count() << " ms.";
             }
             std::cout << std::endl;
-        }
-        else if (!test_case.test_pass() && !test_case.hide) {
+        } else if (!test_case.test_pass() && !test_case.hide) {
             std::cout << test_case.result;
             std::cout << test_case.name << ". ";
             std::cout << "With expression : ";
@@ -173,7 +186,8 @@ class TestCollection {
     template
     <typename T = Exp_r,
      typename std::enable_if<!(std::is_fundamental<T>::value), int>::type = 0>
-    void report_case(TestCase<Exp_r> test_case) {
+    void report_case(TestCase<Exp_r> test_case)
+    {
         if (test_case.test_pass() && !test_case.hide && test_case.flag.show_pass) {
             std::cout << test_case.result;
             std::cout << test_case.name << ". ";
@@ -181,8 +195,7 @@ class TestCollection {
                 std::cout << "Time taken = " << test_case.dur.count() << " ms.";
             }
             std::cout << std::endl;
-        }
-        else if (!test_case.test_pass() && !test_case.hide) {
+        } else if (!test_case.test_pass() && !test_case.hide) {
             std::cout << test_case.result;
             std::cout << test_case.name << ". ";
             if (test_case.flag.show_time && !test_case.flag.fail_notime) {
@@ -192,7 +205,8 @@ class TestCollection {
         }
     }
 public:
-    explicit TestCollection(std::string name, std::initializer_list<TestCase<Exp_r>> tests) {
+    explicit TestCollection(std::string name, std::initializer_list<TestCase<Exp_r>> tests)
+    {
         _name = name;
         for (auto it = tests.begin(); it != tests.end(); it++) {
             _test_cases.push_back(*it);
@@ -206,7 +220,21 @@ public:
         }
     }
 
-    void run_collection(std::string args) {
+    void run_collection()
+    {
+        std::cout << colours::BOLD << "Tests - " << _name << colours::BASE << std::endl;
+        for (size_t i = 0; i < _test_cases.size(); i++) {
+            report_case(_test_cases[i]);
+        }
+        if (_num_passed == _test_cases.size()) {
+            std::cout << colours::PASSF << "All Tests Passed\n" << colours::BASE << std::endl;
+        } else {
+            std::cout << colours::FAILF << _num_passed << " Passed Out of " << _test_cases.size() << " Tests\n" << colours::BASE << std::endl;
+        }
+    }
+
+    void run_collection(std::string args)
+    {
         std::stringstream arguments(args);
         std::string tmp;
 
@@ -239,10 +267,11 @@ public:
             }
             report_case(_test_cases[i]);
         }
-        if (_num_passed == _test_cases.size())
+        if (_num_passed == _test_cases.size()) {
             std::cout << colours::PASSF << "All Tests Passed\n" << colours::BASE << std::endl;
-        else
+        } else {
             std::cout << colours::FAILF << _num_passed << " Passed Out of " << _test_cases.size() << " Tests\n" << colours::BASE << std::endl;
+        }
     }
 };
 }
