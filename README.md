@@ -1,7 +1,7 @@
 # Zolomon
 Another single header testing library for C++.
 
-⚠️  **This is the alpha channel of the header. It exists to try out new features before they go to the main branch.**
+⚠️**This is the alpha channel of the header. It exists to try out new features before they go to the main branch.**⚠️
 
 ## Contents
 
@@ -16,7 +16,7 @@ Zolomon is  a single header testing library for C++, that reports file and line 
 
 The name is inspired from the DC character Zoom, who creates tragic situations for heroes to make them better. Similar to what you can do to your programs using the library.
 
-## Alpha Features 
+## Alpha Features‼️
 - Currently working upon a way to import testing data from .csv files to allow rapid generation of test cases in spreadsheet programs. Challenges faced are as follows
     - [X] Figure out a way to allow user to specify a template for the function to be tested. Done using variadic template functions
     - [X] Figure out a way to assign these arguments the necessary values from the .csv file. Done using arrays and template packs. However, this poses the challenge below
