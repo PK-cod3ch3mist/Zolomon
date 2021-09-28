@@ -1,9 +1,12 @@
 # Zolomon
 Another single header testing library for C++.
 
+**Caution.** ⚠️  **This is the alpha channel of the header. It exists to try out new features before they go to the main branch.**
+
 ## Contents
 
 - [About](#about)
+- [Alpha Features](#alpha-features)
 - How to Use
     - [Installation](#installation-and-set-up)
     - [Quick Start](#a-simple-example)
@@ -12,6 +15,15 @@ Another single header testing library for C++.
 Zolomon is  a single header testing library for C++, that reports file and line number in case of error, and can be used to create unit tests
 
 The name is inspired from the DC character Zoom, who creates tragic situations for heroes to make them better. Similar to what you can do to your programs using the library.
+
+## Alpha Features 
+- Currently working upon a way to import testing data from .csv files to allow rapid generation of test cases in spreadsheet programs. Challenges faced are as follows
+    - [X] Figure out a way to allow user to specify a template for the function to be tested. Done using variadic template functions
+    - [X] Figure out a way to assign these arguments the necessary values from the .csv file. Done using arrays and template packs. However, this poses the challenge below
+    - [ ] When initialising these arguments to the function, cast them into types as required by the arguments. For example, if in a .csv file the things are characters/integers (since .csv file is in reality a plaintext file), we have to transform them to float before passing them to a float vector.
+    - [ ] Finally, figure out a way to call the function using this va_list/variadic argument list in way that does not break.
+    - [ ] Additional, figure out a way to do all of this for user defined classes, if not covered by the time.
+- Also working upon a way to export testing data to a .csv or a .txt file. This is nearing completion.
 
 ## How to Use
 ### Installation and Set Up
