@@ -1,6 +1,12 @@
 # Zolomon
 Another single header testing library for C++.
 
+![Lines of code](https://img.shields.io/tokei/lines/github/PK-cod3ch3mist/Zolomon)
+![GitHub issues](https://img.shields.io/github/issues/PK-cod3ch3mist/Zolomon)
+![GitHub Repo stars](https://img.shields.io/github/stars/PK-cod3ch3mist/Zolomon)
+![GitHub last commit](https://img.shields.io/github/last-commit/PK-cod3ch3mist/Zolomon)
+
+
 ## Contents
 
 - [About](#about)
