@@ -1,7 +1,7 @@
 # Zolomon
 Another single header testing library for C++.
 
-⚠️ **This is the alpha channel of the header. It exists to try out new features before they go to the main branch.** ⚠️
+⚠️ **This is the alpha channel of the header. It exists to try out new features before they go to the main branch.**
 
 ## Contents
 
