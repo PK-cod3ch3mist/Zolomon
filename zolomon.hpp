@@ -25,6 +25,8 @@
 #include <algorithm>
 #include <chrono>
 #include <type_traits>
+#include <fstream>
+#include <functional>
 
 #define STRINGIZING(X) #X
 #define STR(X) STRINGIZING(X)
@@ -53,6 +55,14 @@ struct case_flags {
     int show_pass : 1;
     int fail_notime : 1;
 };
+
+template <typename T>
+struct identity { typedef T type; };
+
+template <typename T, typename X, std::size_t N, std::size_t... Is>
+constexpr void call_ctor(T & contClass, std::array<X, N> const &src, std::index_sequence<Is...>) {
+    contClass = T{ src[Is]...};
+}
 
 class TestResult
 {
@@ -204,6 +214,7 @@ class TestCollection
             std::cout << std::endl;
         }
     }
+
 public:
     explicit TestCollection(std::string name, std::initializer_list<TestCase<Exp_r>> tests)
     {
@@ -219,6 +230,24 @@ public:
             }
         }
     }
+
+    template <typename Func_t, typename T, typename ...Args>
+    explicit TestCollection(std::string name, const char * filename, Func_t func, int argn, Args... args) {
+        ifstream fin(filename, ios::in);
+        string attr;
+        getline(fin, attr);
+        while (getline(fin, attr)) {
+            std::string testName = "";
+            size_t index = 0;
+            // Take the test name from csv file
+            for (; attr[index] != ','; index++) {
+                testName += attr[index];
+            }
+            // Take the function arguments from csv file
+            // Use compile-time recursion for this
+            assignArgs(attr, index, args);
+        }
+    } 
 
     void run_collection()
     {
