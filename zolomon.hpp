@@ -59,11 +59,6 @@ struct case_flags {
 template <typename T>
 struct identity { typedef T type; };
 
-template <typename T, typename X, std::size_t N, std::size_t... Is>
-constexpr void call_ctor(T & contClass, std::array<X, N> const &src, std::index_sequence<Is...>) {
-    contClass = T{ src[Is]...};
-}
-
 class TestResult
 {
     bool passed;
@@ -245,7 +240,6 @@ public:
             }
             // Take the function arguments from csv file
             // Use compile-time recursion for this
-            assignArgs(attr, index, args);
         }
     } 
 
