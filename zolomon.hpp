@@ -52,7 +52,7 @@ const std::string BOLD = "\033[1m";
 }
 
 enum report_format {
-    report_junitXML,
+    // report_junitXML,
     report_HTML,
     report_console
 }result_show;
@@ -186,8 +186,6 @@ void parse_args(int argc, char* argv[]) {
                 flags.fail_notime = 0;
             } else if (argument == "-nft") {
                 flags.fail_notime = 1;
-            } else if (argument == "-junit") {
-                result_show = report_junitXML;
             } else if (argument == "-html") {
                 result_show = report_HTML;
             } else {
