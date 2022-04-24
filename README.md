@@ -53,7 +53,7 @@ Compiling the above code and running the executable (with argument `-p`) would g
 
 ![Simple Eg Output](https://raw.githubusercontent.com/PK-cod3ch3mist/Zolomon/main/simple.png)
 
-Running with arguments `-p`, `-html` gives the output shown in [testlog.html](./testlog.html) file.
+Running with arguments `-p`, `-html` gives the output shown in [testlog.html](./testlog.html) file (available for [preview](https://htmlpreview.github.io/?https://github.com/PK-cod3ch3mist/Zolomon/blob/main/testlog.html))
 
 **Note that arguments can also be passed in the `run_collection()` function, where they override the console arguments for the particular `TestCollection`**
 
