@@ -30,9 +30,11 @@ Below is a simple file that demonstrates the use of Zolomon library.
 #include <vector>
 #include "zolomon.hpp"
 
-int main() {
+int main(int argc, char* argv[])
+{
     std::vector<int> v = {1, 2, 0, 3, 0, 1, 4, 2, 1};
-    zoln::TestCollection Test1("Sample Test 1" , {
+    zoln::parse_args(argc, argv);
+    zoln::TestCollection Test1("Sample Test 1", {
         zoln::TestCase("Test Case 1", v[0], 1, true),
         zoln::TestCase("Test Case 2", v[2], 0, true)
     });
@@ -42,6 +44,7 @@ int main() {
     });
     Test1.run_collection();
     Test2.run_collection();
+    zoln::end_report();
     return 0;
 }
 ```
@@ -78,7 +81,8 @@ The following program, when given an array of integers, returns a new array such
 #include <vector>
 #include "zolomon.hpp"
 
-std::vector<int> prodVectorNoDivision(std::vector<int> &nums) {
+std::vector<int> prodVectorNoDivision(std::vector<int> &nums)
+{
     std::vector<long int> prefix(nums.size());
     std::vector<long int> suffix(nums.size());
     std::vector<int> result(nums.size());
@@ -92,25 +96,25 @@ std::vector<int> prodVectorNoDivision(std::vector<int> &nums) {
     for (int i = nums.size() - 2; i >= 0; i--) {
         suffix[i] = nums[i + 1] * suffix[i + 1];
     }
-
     for (int i = 0; i < result.size(); i++) {
         result[i] = prefix[i] * suffix[i];
     }
-
     return result;
 }
 
-int main() {
+int main(int argc, char* argv[])
+{
     std::vector<int> nums1 = {1, 2, 2, 3, 1};
     std::vector<int> nums2 = {0, 1, 2, 1, 2};
 
+    zoln::parse_args(argc, argv);
     zoln::TestCollection Test1("Sample Test", {
         zoln::TestCase("Basic Test", prodVectorNoDivision(nums1), std::vector<int>({12, 6, 6, 4, 12}), true),
         zoln::TestCase("Handling Zeroes", prodVectorNoDivision(nums2), std::vector<int>({4, 0, 0, 0, 0}), true)
     });
 
     Test1.run_collection("-p -d");
-
+    zoln::end_report();
     return 0;
 }
 ```
