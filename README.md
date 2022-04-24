@@ -40,8 +40,8 @@ int main() {
         zoln::TestCase("Test Case 1", v[0] + v[1], 2, true),
         zoln::TestCase("Test Case 2", v[0] + v[1], 3, true)
     });
-    Test1.run_collection("-nd -np");
-    Test2.run_collection("-d -p -nft");
+    Test1.run_collection();
+    Test2.run_collection();
     return 0;
 }
 ```
@@ -49,9 +49,13 @@ int main() {
 
 **Note that hidden test cases are also run, just not shown.**
 
-Compiling the above code and running the executable would give the following output.
+Compiling the above code and running the executable (with argument `-p`) would give the following output.
 
 ![Simple Eg Output](https://raw.githubusercontent.com/PK-cod3ch3mist/Zolomon/main/simple.png)
+
+Running with arguments `-p`, `-html` gives the output shown in [testlog.html](./testlog.html) file.
+
+**Note that arguments can also be passed in the `run_collection()` function, where they override the console arguments for the particular `TestCollection`**
 
 The strings passed while running are:
 - \-d : show run time of test cases

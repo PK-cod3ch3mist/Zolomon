@@ -31,17 +31,18 @@ std::vector<int> prodVectorNoDivision(std::vector<int> &nums)
     return result;
 }
 
-int main()
+int main(int argc, char* argv[])
 {
     std::vector<int> nums1 = {1, 2, 2, 3, 1};
     std::vector<int> nums2 = {0, 1, 2, 1, 2};
 
+    zoln::parse_args(argc, argv);
     zoln::TestCollection Test1("Sample Test", {
         zoln::TestCase("Basic Test", prodVectorNoDivision(nums1), std::vector<int>({12, 6, 6, 4, 12}), true),
         zoln::TestCase("Handling Zeroes", prodVectorNoDivision(nums2), std::vector<int>({4, 0, 0, 0, 0}), true)
     });
 
     Test1.run_collection("-p -d");
-
+    zoln::end_report();
     return 0;
 }
