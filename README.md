@@ -1,4 +1,4 @@
-<p align="center"><a href="https://github.com/PK-cod3ch3mist/Zolomon"><img src="./assets/zolomon.png" alt="Zolomon" width="50%"></a></p>
+<p align="center"><a href="https://github.com/PK-cod3ch3mist/Zolomon"><img src="./zolomon.png" alt="Zolomon" width="35%"></a></p>
 Another single header testing library for C++.
 
 ![Lines of code](https://img.shields.io/tokei/lines/github/PK-cod3ch3mist/Zolomon)
